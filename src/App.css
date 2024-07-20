@@ -4,7 +4,6 @@
   padding: 2rem;
   text-align: center;
   padding-left: 280px;
-  /* Sidebar genişliğiyle uyumlu olacak şekilde ayarlandı */
 }
 
 .app-container {
@@ -14,7 +13,6 @@
   font-family: "Josefin Sans", sans-serif;
   padding: 20px;
   padding-left: 280px;
-  /* Sidebar genişliğiyle uyumlu olacak şekilde ayarlandı */
 }
 
 .header {
@@ -47,4 +45,28 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  justify-content: center;
+}
+
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 600px;
+  position: relative;
+  top: 60px;
+  /* Başlık ve logonun üstünü kaplamadan ekranın üstünden biraz aşağıda */
+  z-index: 1000;
+  /* Diğer öğelerin üstünde olması için */
+}
+
+.search-bar {
+  width: 100%;
+  /* Tam genişlikte olmayacak */
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid #33272a;
+  border-radius: 8px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
 }

@@ -13,4 +13,5 @@
     border-radius: 8px;
     font-family: "Josefin Sans", sans-serif;
     font-size: 16px;
+    transform: translateX(-300px);
 }
