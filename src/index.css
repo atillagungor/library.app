@@ -7,8 +7,15 @@
   font-size: 18pt;
 }
 
-img {
+.header-img {
   position: absolute;
   top: 9px;
   left: 9px;
+}
+
+.header-title {
+  position: absolute;
+  top: 40px;
+  left: 120px;
+  font-size: 20pt;
 }
