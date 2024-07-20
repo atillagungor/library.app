@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  padding-left: 280px;
+  /* Sidebar genişliğiyle uyumlu olacak şekilde ayarlandı */
 }
 
 .app-container {
@@ -11,13 +13,16 @@
   color: #33272a;
   font-family: "Josefin Sans", sans-serif;
   padding: 20px;
+  padding-left: 280px;
+  /* Sidebar genişliğiyle uyumlu olacak şekilde ayarlandı */
 }
 
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .header-img {
