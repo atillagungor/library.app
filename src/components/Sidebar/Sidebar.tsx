@@ -5,9 +5,16 @@ const SideBar: React.FC = () => {
     const [categories, setCategories] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/Category')
+        fetch('https://localhost:44389/api/Categories/getall?PageIndex=0&PageSize=5')
             .then(response => response.json())
-            .then(data => setCategories(data.map((category: any) => category.name)))
+            .then(data => {
+                console.log('Fetched Data:', data);
+                if (data.items && Array.isArray(data.items)) {
+                    setCategories(data.items.map((category: any) => category.name));
+                } else {
+                    console.error('Data is not in expected format:', data);
+                }
+            })
             .catch(error => console.error('Error fetching categories:', error));
     }, []);
 
