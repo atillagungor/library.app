@@ -74,5 +74,12 @@ h2 {
 .error-message {
     color: #e74c3c;
     font-size: 14px;
-    margin: 10px 0;
+    margin: 2px 0;
+    /* Yukarıdan ve aşağıdan daha az boşluk */
+    padding: 2px 0;
+    /* İç boşlukları azalt */
+    border: none;
+    /* Kenar çizgisi kaldırıldı */
+    display: block;
+    /* Satır blok olarak ayarlandı */
 }

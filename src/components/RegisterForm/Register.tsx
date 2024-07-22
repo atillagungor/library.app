@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './Register.css';
+import AuthService from '../../services/AuthService'; // AuthService'ı import ettik
+import { RegisterRequestModel } from '../../models/requests/Auth/RegisterRequestModel';
 
 const Register: React.FC = () => {
     const navigate = useNavigate();
 
-    const initialValues = {
-        name: '',
+    const initialValues: RegisterRequestModel = {
+        firstName: '',
         lastName: '',
         email: '',
         password: '',
-        confirmPassword: '',
     };
 
     const validationSchema = Yup.object({
-        name: Yup.string().required('Required'),
+        firstName: Yup.string().required('Required'),
         lastName: Yup.string().required('Required'),
         email: Yup.string().email('Invalid email address').required('Required'),
         password: Yup.string().required('Required'),
@@ -26,8 +27,23 @@ const Register: React.FC = () => {
     });
 
     const handleSubmit = (values: typeof initialValues) => {
-        console.log(values);
-        navigate('/login');
+        const registerRequest: RegisterRequestModel = {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.password,
+        };
+
+        AuthService.register(registerRequest)
+            .then(response => {
+                // Başarılı işlem sonrası login sayfasına yönlendir
+                console.log('Registration successful:', response.data);
+                navigate('/login');
+            })
+            .catch(error => {
+                console.error('There was an error registering!', error);
+                // Hata durumunda kullanıcıyı bilgilendir
+            });
     };
 
     return (
@@ -41,14 +57,14 @@ const Register: React.FC = () => {
                 {() => (
                     <Form>
                         <div className="input-group">
-                            <label htmlFor="name">Name:</label>
+                            <label htmlFor="firstName">First Name:</label>
                             <Field
                                 type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Enter your name"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Enter your first name"
                             />
-                            <ErrorMessage name="name" component="div" className="error-message" />
+                            <ErrorMessage name="firstName" component="div" className="error-message" />
                         </div>
                         <div className="input-group">
                             <label htmlFor="lastName">Last Name:</label>

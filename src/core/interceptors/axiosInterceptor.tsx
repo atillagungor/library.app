@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_API_URL } from "../../enviroment/Enviroment";
+import { BASE_API_URL } from "../../enviroment/enviroment";
 import tokenService from "../services/tokenService";
 import { store } from "../../stores/configureStore";
 import { addRequest, removeRequest } from "../../stores/loading/loadingSlice";

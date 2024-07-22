@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import Book from './components/Book/Book';
@@ -9,15 +9,26 @@ import Register from './components/RegisterForm/Register';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import TokenService from './core/services/tokenService';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Sayfa yüklendiğinde token kontrolü yap
+    if (TokenService.hasToken()) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
+    TokenService.removeToken();
     setIsLoggedIn(false);
   };
 
@@ -44,6 +55,7 @@ function App() {
                   <span>Library</span>
                   <span>App</span>
                 </div>
+                <button className="logout-button" onClick={handleLogout}>Logout</button>
               </div>
               <SearchBar />
               <div className="books-grid">

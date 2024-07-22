@@ -1,3 +1,4 @@
+/* Genel ayarlar */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -12,10 +13,11 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
+/* Header */
 .header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -41,11 +43,82 @@
   display: block;
 }
 
+/* Buton stilleri */
+.logout-button {
+  margin-left: auto;
+  background-color: #e57373;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Books grid */
 .books-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 140px;
-  /* Header ve search bar'a yer açmak için artırıldı */
   justify-content: center;
+}
+
+/* Login sayfası */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me label {
+  margin-left: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.forgot-password {
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.875rem;
 }

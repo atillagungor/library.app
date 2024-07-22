@@ -16,19 +16,27 @@ interface Book {
 const Book: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const loadBooks = async () => {
             try {
+                setLoading(true);
                 const booksData = await fetchBooks();
                 setBooks(booksData);
             } catch (error) {
                 setError('Failed to load books.');
+            } finally {
+                setLoading(false);
             }
         };
 
         loadBooks();
     }, []);
+
+    if (loading) {
+        return <div className="loading-message">Loading books...</div>;
+    }
 
     if (error) {
         return <div className="error-message">{error}</div>;
@@ -49,8 +57,11 @@ const Book: React.FC = () => {
                         <div className="book-info">
                             <p className="book-author">Author: {book.authorName}</p>
                             <h3 className="book-title">{book.name}</h3>
-                            <button className="details-button" onClick={() => console.log(`Details of ${book.name}`)}>
-                                Detaylar
+                            <button
+                                className="details-button"
+                                onClick={() => console.log(`Details of ${book.name}`)}
+                            >
+                                Details
                             </button>
                         </div>
                     </div>
