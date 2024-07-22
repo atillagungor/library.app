@@ -2,16 +2,35 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: -40px;
-    margin-bottom: 100px;
+    padding: 20px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fef6e4;
 }
 
 .search-bar {
-    width: 60%;
-    padding: 10px;
-    border: 1px solid #33272a;
-    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    padding: 12px 20px;
+    border: 2px solid #33272a;
+    border-radius: 25px;
     font-family: "Josefin Sans", sans-serif;
-    font-size: 16px;
-    transform: translateX(-300px);
+    font-size: 18px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 10px rgba(51, 39, 42, 0.2);
+    border-color: #8a6552;
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        width: 90%;
+        font-size: 16px;
+    }
 }

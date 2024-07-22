@@ -1,3 +1,11 @@
+.books-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
 .book-container {
     background-color: #fef6e4;
     color: #33272a;
@@ -7,20 +15,42 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
-    width: 200px;
-    margin: 10px auto;
-    position: relative;
-    transform: translateX(-300px);
+    width: calc(25% - 20px);
+    /* 4 kitap yan yana, 20px boşluk bırakarak */
+    min-width: 200px;
+    /* Minimum genişlik */
+    box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+    .book-container {
+        width: calc(33.333% - 20px);
+        /* 3 kitap yan yana */
+    }
+}
+
+@media (max-width: 900px) {
+    .book-container {
+        width: calc(50% - 20px);
+        /* 2 kitap yan yana */
+    }
+}
+
+@media (max-width: 600px) {
+    .book-container {
+        width: 100%;
+        /* 1 kitap tam genişlik */
+    }
 }
 
 .book-container:hover {
-    transform: translateX(-300px) scale(1.05);
+    transform: scale(1.05);
     z-index: 10;
 }
 
 .book-cover {
     width: 100%;
-    height: auto;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -30,14 +60,15 @@
 }
 
 .book-author {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: #555;
     margin: 0;
 }
 
 .book-title {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 8px 0;
+    font-weight: bold;
 }
 
 .details-button {
@@ -52,4 +83,13 @@
 
 .details-button:hover {
     background-color: #555;
+}
+
+.error-message,
+.no-books-message {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #33272a;
 }
