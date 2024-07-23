@@ -13,7 +13,11 @@ interface Book {
     categoryId: string;
 }
 
-const Book: React.FC = () => {
+interface BookProps {
+    searchTerm: string;
+}
+
+const Book: React.FC<BookProps> = ({ searchTerm }) => {
     const [books, setBooks] = useState<Book[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -42,12 +46,16 @@ const Book: React.FC = () => {
         return <div className="error-message">{error}</div>;
     }
 
+    const filteredBooks = books.filter(book =>
+        book.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="books-grid">
-            {books.length === 0 ? (
+            {filteredBooks.length === 0 ? (
                 <div className="no-books-message">No books available.</div>
             ) : (
-                books.map((book) => (
+                filteredBooks.map((book) => (
                     <div className="book-container" key={book.id}>
                         <img
                             src={book.imageUrl || "https://via.placeholder.com/200x300"}
